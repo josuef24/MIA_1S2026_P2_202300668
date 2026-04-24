@@ -4,98 +4,98 @@
 #  1: CREAR DISCOS Y VALIDAR ERRORES
 
 # ERROR: Parámetro incorrecto
-mkdisk -param=x -size=30 -path=/home/"su usuario"/Pruebas_MIA/DiscoError.mia
+mkdisk -param=x -size=30 -path=/home/ubuntu/Pruebas_MIA/DiscoError.mia
 
 # ERROR: Tamaño incorrecto
-mkdisk -tamaño=3000 -unit=K -path=/home/"su usuario"/Pruebas_MIA/DiscoError.mia
+mkdisk -tamaño=3000 -unit=K -path=/home/ubuntu/Pruebas_MIA/DiscoError.mia
 
 # Disco A - 25MB
-mkdisk -size=25 -unit=M -fit=FF -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia
+mkdisk -size=25 -unit=M -fit=FF -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia
 
 # Disco B - 30MB
-mkdisk -size=30 -unit=M -fit=BF -path=/home/"su usuario"/Pruebas_MIA/DiscoB.mia
+mkdisk -size=30 -unit=M -fit=BF -path=/home/ubuntu/Pruebas_MIA/DiscoB.mia
 
 # Disco C - 15MB
-mkdisk -size=15 -unit=M -path=/home/"su usuario"/Pruebas_MIA/DiscoC.mia
+mkdisk -size=15 -unit=M -path=/home/ubuntu/Pruebas_MIA/DiscoC.mia
 
 #  2: RMDISK - ELIMINAR DISCOS
 
 # ERROR: Disco no existe
-rmdisk -path=/home/"su usuario"/Pruebas_MIA/DiscoNoExiste.mia
+rmdisk -path=/home/ubuntu/Pruebas_MIA/DiscoNoExiste.mia
 
 # Crear discos temporales para pruebas de eliminación
-mkdisk -size=10 -unit=M -path=/home/"su usuario"/Pruebas_MIA/DiscoTemp1.mia
-mkdisk -size=8 -unit=M -path=/home/"su usuario"/Pruebas_MIA/DiscoTemp2.mia
+mkdisk -size=10 -unit=M -path=/home/ubuntu/Pruebas_MIA/DiscoTemp1.mia
+mkdisk -size=8 -unit=M -path=/home/ubuntu/Pruebas_MIA/DiscoTemp2.mia
 
 # Eliminar discos temporales
-rmdisk -path=/home/"su usuario"/Pruebas_MIA/DiscoTemp1.mia
-rmdisk -path=/home/"su usuario"/Pruebas_MIA/DiscoTemp2.mia
+rmdisk -path=/home/ubuntu/Pruebas_MIA/DiscoTemp1.mia
+rmdisk -path=/home/ubuntu/Pruebas_MIA/DiscoTemp2.mia
 
 # ERROR: Intentar eliminar disco ya eliminado
-rmdisk -path=/home/"su usuario"/Pruebas_MIA/DiscoTemp1.mia
+rmdisk -path=/home/ubuntu/Pruebas_MIA/DiscoTemp1.mia
 
 #  3: FDISK - CREAR PARTICIONES
 
 # ERROR: Ruta no encontrada
-fdisk -type=P -unit=M -name=PartError -size=10 -path=/home/"su usuario"/Pruebas_MIA/DiscoError.mia -fit=BF
+fdisk -type=P -unit=M -name=PartError -size=10 -path=/home/ubuntu/Pruebas_MIA/DiscoError.mia -fit=BF
 
 # Disco A - 3 particiones primarias
-fdisk -type=P -unit=M -name=PartA1 -size=8 -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia -fit=BF
-fdisk -type=P -unit=M -name=PartA2 -size=8 -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia -fit=BF
-fdisk -type=P -unit=M -name=PartA3 -size=8 -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia -fit=BF
+fdisk -type=P -unit=M -name=PartA1 -size=8 -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia -fit=BF
+fdisk -type=P -unit=M -name=PartA2 -size=8 -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia -fit=BF
+fdisk -type=P -unit=M -name=PartA3 -size=8 -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia -fit=BF
 
 # ERROR: Límite de particiones primarias
-fdisk -type=P -unit=M -name=PartError -size=5 -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia -fit=BF
+fdisk -type=P -unit=M -name=PartError -size=5 -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia -fit=BF
 
 # Disco B - Partición extendida con lógicas
-fdisk -type=E -unit=M -name=PartExtB -size=20 -path=/home/"su usuario"/Pruebas_MIA/DiscoB.mia -fit=BF
-fdisk -type=L -unit=M -name=PartB1 -size=5 -path=/home/"su usuario"/Pruebas_MIA/DiscoB.mia -fit=BF
-fdisk -type=L -unit=M -name=PartB2 -size=5 -path=/home/"su usuario"/Pruebas_MIA/DiscoB.mia -fit=BF
-fdisk -type=L -unit=M -name=PartB3 -size=5 -path=/home/"su usuario"/Pruebas_MIA/DiscoB.mia -fit=BF
+fdisk -type=E -unit=M -name=PartExtB -size=20 -path=/home/ubuntu/Pruebas_MIA/DiscoB.mia -fit=BF
+fdisk -type=L -unit=M -name=PartB1 -size=5 -path=/home/ubuntu/Pruebas_MIA/DiscoB.mia -fit=BF
+fdisk -type=L -unit=M -name=PartB2 -size=5 -path=/home/ubuntu/Pruebas_MIA/DiscoB.mia -fit=BF
+fdisk -type=L -unit=M -name=PartB3 -size=5 -path=/home/ubuntu/Pruebas_MIA/DiscoB.mia -fit=BF
 
 # Disco C - 2 particiones
-fdisk -type=P -unit=M -name=PartC1 -size=8 -path=/home/"su usuario"/Pruebas_MIA/DiscoC.mia
-fdisk -type=P -unit=M -name=PartC2 -size=6 -path=/home/"su usuario"/Pruebas_MIA/DiscoC.mia
+fdisk -type=P -unit=M -name=PartC1 -size=8 -path=/home/ubuntu/Pruebas_MIA/DiscoC.mia
+fdisk -type=P -unit=M -name=PartC2 -size=6 -path=/home/ubuntu/Pruebas_MIA/DiscoC.mia
 
 # ERROR: Falta espacio
-fdisk -type=P -unit=M -name=PartError -size=20 -path=/home/"su usuario"/Pruebas_MIA/DiscoC.mia
+fdisk -type=P -unit=M -name=PartError -size=20 -path=/home/ubuntu/Pruebas_MIA/DiscoC.mia
 
 # FASE PRUEBAS DE FDISK ADD Y DELETE
 
 # Agregar 2MB a PartA1
-fdisk -add=2 -unit=M -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia -name=PartA1
+fdisk -add=2 -unit=M -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia -name=PartA1
 
 # Quitar 2MB a PartA1
-fdisk -add=-2 -unit=M -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia -name=PartA1
+fdisk -add=-2 -unit=M -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia -name=PartA1
 
 # Crear partición temporal para prueba de DELETE
-fdisk -type=P -unit=M -name=PartTempA4 -size=1 -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia
+fdisk -type=P -unit=M -name=PartTempA4 -size=1 -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia
 
 # Eliminar partición de forma rápida (Fast)
-fdisk -delete=fast -name=PartTempA4 -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia
+fdisk -delete=fast -name=PartTempA4 -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia
 
 # Crear otra partición temporal en Disco B
-fdisk -type=L -unit=M -name=PartTempB4 -size=2 -path=/home/"su usuario"/Pruebas_MIA/DiscoB.mia
+fdisk -type=L -unit=M -name=PartTempB4 -size=2 -path=/home/ubuntu/Pruebas_MIA/DiscoB.mia
 
 # Eliminar partición de forma completa (Full - rellena con \0)
-fdisk -delete=full -name=PartTempB4 -path=/home/"su usuario"/Pruebas_MIA/DiscoB.mia
+fdisk -delete=full -name=PartTempB4 -path=/home/ubuntu/Pruebas_MIA/DiscoB.mia
 
 # ERROR: Intentar eliminar partición que no existe
-fdisk -delete=fast -name=PartNoExiste -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia
+fdisk -delete=fast -name=PartNoExiste -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia
 
 #  4: MOUNT - MONTAR PARTICIONES
 
 # ERROR: Partición no existe
-mount -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia -name=PartNoExiste
+mount -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia -name=PartNoExiste
 
 # Montar particiones
-mount -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia -name=PartA1
-mount -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia -name=PartA2
-mount -path=/home/"su usuario"/Pruebas_MIA/DiscoB.mia -name=PartB1
-mount -path=/home/"su usuario"/Pruebas_MIA/DiscoC.mia -name=PartC1
+mount -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia -name=PartA1
+mount -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia -name=PartA2
+mount -path=/home/ubuntu/Pruebas_MIA/DiscoB.mia -name=PartB1
+mount -path=/home/ubuntu/Pruebas_MIA/DiscoC.mia -name=PartC1
 
 # ERROR: Partición ya montada
-mount -path=/home/"su usuario"/Pruebas_MIA/DiscoA.mia -name=PartA1
+mount -path=/home/ubuntu/Pruebas_MIA/DiscoA.mia -name=PartA1
 
 # Ver particiones montadas
 mounted
@@ -121,6 +121,7 @@ mkfs -type=full -fs=3fs -id=681C
 # Usuario: root
 # Contraseña: 123
 # Partición: 682A
+login -user=root -pass=123 -id=682A
 
 #  7: CREAR GRUPOS
 
@@ -188,9 +189,13 @@ mkdir -p -path=/home/archivos/manuales
 
 # Ir a la interfaz web y:
 # 1. Hacer logout (botón "Cerrar Sesión")
+logout
 # 2. Hacer login con usuario: user1, contraseña: pass123, partición: 682A
+login -user=user1 -pass=pass123 -id=682A
 # 3. Hacer logout nuevamente
+logout
 # 4. Hacer login con usuario: root, contraseña: 123, partición: 682A
+login -user=root -pass=123 -id=682A
 
 #  15: CREAR ARCHIVOS CON MKFILE
 

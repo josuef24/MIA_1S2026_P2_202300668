@@ -1,0 +1,91 @@
+# =======================================================
+# SCRIPT DE CALIFICACIÓN RÁPIDA - MIA PROYECTO 2
+# Carnet: 68
+# =======================================================
+# NOTA: Ejecutar estos comandos línea por línea o cargar
+# el script en la consola de tu frontend.
+# =======================================================
+
+# 1. CREACIÓN DE DISCOS (Asegúrate que el directorio exista en tu EC2: mkdir -p /home/ubuntu/Pruebas_MIA)
+mkdisk -size=50 -unit=M -fit=FF -path=/home/ubuntu/Pruebas_MIA/DiscoCalificacion.mia
+mkdisk -size=20 -unit=M -fit=BF -path=/home/ubuntu/Pruebas_MIA/DiscoSecundario.mia
+
+# 2. CREACIÓN DE PARTICIONES (FDISK)
+# Particiones en Disco 1
+fdisk -type=P -unit=M -name=Part1 -size=20 -path=/home/ubuntu/Pruebas_MIA/DiscoCalificacion.mia -fit=BF
+fdisk -type=P -unit=M -name=Part2 -size=15 -path=/home/ubuntu/Pruebas_MIA/DiscoCalificacion.mia -fit=BF
+# Partición en Disco 2
+fdisk -type=P -unit=M -name=Part3 -size=10 -path=/home/ubuntu/Pruebas_MIA/DiscoSecundario.mia -fit=BF
+
+# 3. MONTAJE DE PARTICIONES (MOUNT)
+mount -path=/home/ubuntu/Pruebas_MIA/DiscoCalificacion.mia -name=Part1
+mount -path=/home/ubuntu/Pruebas_MIA/DiscoCalificacion.mia -name=Part2
+mount -path=/home/ubuntu/Pruebas_MIA/DiscoSecundario.mia -name=Part3
+# Los IDs asignados deberían ser: 681A (Part1), 682A (Part2), 681B (Part3)
+mounted
+
+# 4. FORMATEO DE SISTEMAS DE ARCHIVOS (EXT2 y EXT3)
+# Formatear Part1 como EXT3 (Con Journaling)
+mkfs -type=full -fs=3fs -id=681A
+# Formatear Part3 como EXT2 (Sin Journaling)
+mkfs -type=full -fs=2fs -id=681B
+
+# =======================================================
+# A PARTIR DE AQUÍ: 
+# Debes iniciar sesión en la interfaz web (Login) con:
+# Usuario: root
+# Contraseña: 123
+# Partición: 681A
+# =======================================================
+
+# 5. GESTIÓN DE USUARIOS Y GRUPOS
+mkgrp -name=calificadores
+mkgrp -name=estudiantes
+mkusr -user=auxiliar -pass=aux123 -grp=calificadores
+mkusr -user=alumno -pass=alu123 -grp=estudiantes
+
+# Verificar creación en el archivo users.txt
+cat -file1=/users.txt
+
+# 6. GESTIÓN DE CARPETAS Y ARCHIVOS
+mkdir -p -path=/home/archivos/proyecto
+mkdir -path=/home/archivos/general
+# Crear archivo temporal para rellenar contenido
+mkfile -path=/home/fuente.txt -size=50
+# Crear archivo con contenido
+mkfile -path=/home/archivos/proyecto/nota.txt -contenido=/home/fuente.txt
+mkfile -path=/home/archivos/general/info.txt -size=25
+
+# 7. PERMISOS UGO (CHMOD Y CHOWN)
+# Cambiar propietario de forma recursiva
+chown -path=/home/archivos/proyecto -user=auxiliar -r
+# Cambiar permisos del archivo a 777 (Lectura, escritura y ejecución para todos)
+chmod -path=/home/archivos/proyecto/nota.txt -ugo=777
+
+# 8. COMANDOS ADICIONALES (Búsqueda y Edición)
+find -path=/home -name=nota.txt
+rename -path=/home/archivos/general/info.txt -name=info_renombrado.txt
+
+# =======================================================
+# PRUEBAS CRÍTICAS DE RECUPERACIÓN (LOSS & RECOVERY)
+# Exclusivo para EXT3 (Partición 681A)
+# =======================================================
+
+# 9. SIMULAR PÉRDIDA DE DATOS
+loss -id=681A
+# -> Aquí debes mostrarle al calificador en el frontend que el disco "se rompió" y no hay archivos.
+
+# 10. RECUPERACIÓN MEDIANTE JOURNALING
+recovery -id=681A
+# -> Aquí debes mostrar que los archivos, usuarios y carpetas volvieron a aparecer intactos en el Explorador.
+
+# 11. VER REPORTE DE JOURNALING
+# Comprobar que todas las transacciones quedaron registradas
+journaling -id=681A
+
+# 12. DESMONTAJE FINAL (Limpieza)
+# (Cierra sesión en la interfaz web antes de ejecutar esto)
+unmount -id=681A
+unmount -id=682A
+unmount -id=681B
+mounted

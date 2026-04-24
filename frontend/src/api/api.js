@@ -3,7 +3,7 @@
 // ============================================================
 
 // URL base del backend — cambiar por la IP del EC2 al desplegar
-const BASE_URL = import.meta.env.VITE_API_URL || '/api'
+const BASE_URL = 'http://18.219.225.200:8080'
 
 // ── Ejecutar un comando ───────────────────────────────────
 export async function executeCommand(command) {
@@ -17,12 +17,21 @@ export async function executeCommand(command) {
 
 // ── Ejecutar un script completo ────────────────────────────
 export async function executeScript(script) {
-  const res = await fetch(`${BASE_URL}/execute_script`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ script })
-  })
-  return res.json()
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 300000) // 5 minutos
+  try {
+    const res = await fetch(`${BASE_URL}/execute_script`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ script }),
+      signal: controller.signal
+    })
+    clearTimeout(timeout)
+    return res.json()
+  } catch (err) {
+    clearTimeout(timeout)
+    throw err
+  }
 }
 
 // ── Login ──────────────────────────────────────────────────

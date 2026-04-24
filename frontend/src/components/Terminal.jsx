@@ -101,6 +101,9 @@ export default function Terminal({ session, onLoginClick, onLogout }) {
       } catch {
         addOutput('ERROR: No se pudo ejecutar el script\n')
       }
+      setHistory(h => [...h, {
+        type: 'info', text: `✓ Script ${file.name} finalizado`
+      }])
       setLoading(false)
     }
     reader.readAsText(file)

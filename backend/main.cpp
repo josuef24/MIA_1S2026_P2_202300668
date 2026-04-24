@@ -94,8 +94,24 @@ static std::string jsonGetStr(const std::string& body, const std::string& key) {
     pos = body.find('"', pos);
     if (pos == std::string::npos) return "";
     pos++;
-    size_t end = body.find('"', pos);
-    if (end == std::string::npos) return "";
+    
+    // Encontrar la comilla de cierre ignorando las escapadas \"
+    size_t end = pos;
+    while (end < body.size()) {
+        if (body[end] == '"') {
+            // Verificar si está escapada
+            size_t backslashes = 0;
+            for (size_t k = end - 1; k >= pos && body[k] == '\\'; k--) {
+                backslashes++;
+            }
+            if (backslashes % 2 == 0) {
+                break; // No está escapada, es el fin
+            }
+        }
+        end++;
+    }
+    
+    if (end >= body.size()) return "";
     // Unescape básico
     std::string val = body.substr(pos, end - pos);
     std::string out;

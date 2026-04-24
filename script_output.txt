@@ -1,0 +1,232 @@
+# PRUEBA GODISK - MIA 2S 2025
+# 3 Discos - Validaci\u00f3n de errores
+# MODIFICAR EL 12 CON LOS ULTIMOS DIGITOS DE SU CARNET
+#  1: CREAR DISCOS Y VALIDAR ERRORES
+# ERROR: Par\u00e1metro incorrecto
+ERROR: No se pudo crear el archivo en /home/ubuntu/Pruebas_MIA/DiscoError.mia
+# ERROR: Tama\u00f1o incorrecto
+ERROR: Falta parámetro -size
+# Disco A - 25MB
+ERROR: No se pudo crear el archivo en /home/ubuntu/Pruebas_MIA/DiscoA.mia
+# Disco B - 30MB
+ERROR: No se pudo crear el archivo en /home/ubuntu/Pruebas_MIA/DiscoB.mia
+# Disco C - 15MB
+ERROR: No se pudo crear el archivo en /home/ubuntu/Pruebas_MIA/DiscoC.mia
+#  2: RMDISK - ELIMINAR DISCOS
+# ERROR: Disco no existe
+ERROR: El disco no existe: /home/ubuntu/Pruebas_MIA/DiscoNoExiste.mia
+# Crear discos temporales para pruebas de eliminaci\u00f3n
+ERROR: No se pudo crear el archivo en /home/ubuntu/Pruebas_MIA/DiscoTemp1.mia
+ERROR: No se pudo crear el archivo en /home/ubuntu/Pruebas_MIA/DiscoTemp2.mia
+# Eliminar discos temporales
+ERROR: El disco no existe: /home/ubuntu/Pruebas_MIA/DiscoTemp1.mia
+ERROR: El disco no existe: /home/ubuntu/Pruebas_MIA/DiscoTemp2.mia
+# ERROR: Intentar eliminar disco ya eliminado
+ERROR: El disco no existe: /home/ubuntu/Pruebas_MIA/DiscoTemp1.mia
+#  3: FDISK - CREAR PARTICIONES
+# ERROR: Ruta no encontrada
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoError.mia
+# Disco A - 3 particiones primarias
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+# ERROR: L\u00edmite de particiones primarias
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+# Disco B - Partici\u00f3n extendida con l\u00f3gicas
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoB.mia
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoB.mia
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoB.mia
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoB.mia
+# Disco C - 2 particiones
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoC.mia
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoC.mia
+# ERROR: Falta espacio
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoC.mia
+# FASE PRUEBAS DE FDISK ADD Y DELETE
+# Agregar 2MB a PartA1
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+# Quitar 2MB a PartA1
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+# Crear partici\u00f3n temporal para prueba de DELETE
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+# Eliminar partici\u00f3n de forma r\u00e1pida (Fast)
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+# Crear otra partici\u00f3n temporal en Disco B
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoB.mia
+# Eliminar partici\u00f3n de forma completa (Full - rellena con \0)
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoB.mia
+# ERROR: Intentar eliminar partici\u00f3n que no existe
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+#  4: MOUNT - MONTAR PARTICIONES
+# ERROR: Partici\u00f3n no existe
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+# Montar particiones
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoB.mia
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoC.mia
+# ERROR: Partici\u00f3n ya montada
+ERROR: Disco no encontrado: /home/ubuntu/Pruebas_MIA/DiscoA.mia
+# Ver particiones montadas
+INFO: No hay particiones montadas actualmente
+#  5: MKFS - FORMATEAR PARTICIONES
+# ERROR: ID no encontrado
+ERROR: ID '999X' no está montado
+# Formatear con EXT3 con journaling
+ERROR: ID '682A' no está montado
+# Formatear con EXT3 con journaling
+ERROR: ID '683A' no está montado
+# Formatear resto con EXT3 (solo particiones primarias y l\u00f3gicas, NO extendidas)
+ERROR: ID '681C' no está montado
+#  6: LOGIN Y USUARIOS
+# Ir a la interfaz web y hacer login con:
+# Usuario: root
+# Contrase\u00f1a: 123
+# Partici\u00f3n: 682A
+ERROR: Partición '682A' no montada
+#  7: CREAR GRUPOS
+ERROR: Debe iniciar sesión
+ERROR: Debe iniciar sesión
+ERROR: Debe iniciar sesión
+# ERROR: Grupo ya existe
+ERROR: Debe iniciar sesión
+#  8: VER USUARIOS users.txt
+ERROR: Debe iniciar sesión
+#  9: ELIMINAR GRUPO
+ERROR: Debe iniciar sesión
+# Ver cambios
+ERROR: Debe iniciar sesión
+#  10: CREAR USUARIOS
+ERROR: Debe iniciar sesión
+ERROR: Debe iniciar sesión
+ERROR: Debe iniciar sesión
+# ERROR: Usuario ya existe
+ERROR: Debe iniciar sesión
+# ERROR: Grupo no existe
+ERROR: Debe iniciar sesión
+# Ver cambios
+ERROR: Debe iniciar sesión
+#  11: CAMBIAR GRUPO DE USUARIO
+ERROR: Debe iniciar sesión
+# Ver cambios
+ERROR: Debe iniciar sesión
+#  12: ELIMINAR USUARIO
+ERROR: Debe iniciar sesión
+# Ver cambios
+ERROR: Debe iniciar sesión
+#  13: CREAR DIRECTORIOS
+ERROR: Debe iniciar sesión
+ERROR: Debe iniciar sesión
+# ERROR: No existen carpetas padres
+ERROR: Debe iniciar sesión
+# Con flag recursivo
+ERROR: Debe iniciar sesión
+ERROR: Debe iniciar sesión
+#  14: LOGOUT Y LOGIN COMO USUARIO
+# NOTA: Logout/Login ahora se hacen SOLO desde la interfaz web
+# Ir a la interfaz web y:
+# 1. Hacer logout (bot\u00f3n "Cerrar Sesi\u00f3n")
+ERROR: No hay sesión activa
+# 2. Hacer login con usuario: user1, contrase\u00f1a: pass123, partici\u00f3n: 682A
+ERROR: Partición '682A' no montada
+# 3. Hacer logout nuevamente
+ERROR: No hay sesión activa
+# 4. Hacer login con usuario: root, contrase\u00f1a: 123, partici\u00f3n: 682A
+ERROR: Partición '682A' no montada
+#  15: CREAR ARCHIVOS CON MKFILE
+# Primero crear archivo fuente con contenido para usar con -contenido=
+ERROR: Debe iniciar sesión
+# Con tama\u00f1o
+ERROR: Debe iniciar sesión
+ERROR: Debe iniciar sesión
+# Con contenido copiado desde archivo existente
+ERROR: Debe iniciar sesión
+# Con contenido desde archivo existente
+ERROR: Debe iniciar sesión
+# ERROR: No existe ruta
+ERROR: Debe iniciar sesión
+# ERROR: Tama\u00f1o negativo
+ERROR: Debe iniciar sesión
+# Con flag recursivo
+ERROR: Debe iniciar sesión
+#  16: LEER ARCHIVOS CON CAT
+ERROR: Debe iniciar sesión
+ERROR: Debe iniciar sesión
+ERROR: Debe iniciar sesión
+#  17 y 18: JOURNALING con solo EXT3
+# Ver journal de partici\u00f3n EXT3 (682A es EXT3)
+ERROR: ID '682A' no montado
+#  19:  CHMOD
+# Cambiar permisos de archivo
+ERROR: Debe iniciar sesión
+# Cambiar permisos de carpeta recursivo
+ERROR: Debe iniciar sesión
+# ERROR: Permisos inv\u00e1lidos
+ERROR: Debe iniciar sesión
+#  20:  CHOWN
+# Cambiar propietario de archivo
+ERROR: Debe iniciar sesión
+# Cambiar propietario de carpeta recursivo
+ERROR: Debe iniciar sesión
+# ERROR: Usuario no existe
+ERROR: Debe iniciar sesión
+#  21:  FIND
+# Buscar archivos por nombre exacto
+ERROR: Debe iniciar sesión
+# Buscar con wildcard
+ERROR: Debe iniciar sesión
+# Buscar carpetas
+ERROR: Debe iniciar sesión
+# ERROR: Ruta no existe
+ERROR: Debe iniciar sesión
+#  22: RENAME
+# Renombrar archivo
+ERROR: Debe iniciar sesión
+# Renombrar carpeta
+ERROR: Debe iniciar sesión
+# ERROR: Nombre ya existe
+ERROR: Debe iniciar sesión
+#  23:  COPY
+# Copiar archivo
+ERROR: Debe iniciar sesión
+# ERROR: Destino no existe
+ERROR: Debe iniciar sesión
+#  24:  MOVE
+# Mover archivo (archivo2 ya fue renombrado, usar otro)
+ERROR: Debe iniciar sesión
+# ERROR: Origen no existe
+ERROR: Debe iniciar sesión
+#  25:  EDIT
+# Editar archivo con contenido desde archivo existente
+ERROR: Debe iniciar sesión
+# Verificar cambios
+ERROR: Debe iniciar sesión
+# ERROR: Archivo no existe
+ERROR: Debe iniciar sesión
+#  26:  REMOVE
+# Eliminar archivo
+ERROR: Debe iniciar sesión
+# Eliminar carpeta vac\u00eda
+ERROR: Debe iniciar sesión
+# ERROR: Carpeta no vac\u00eda sin flag -r
+ERROR: Debe iniciar sesión
+# Eliminar carpeta no vac\u00eda con flag -r
+ERROR: Debe iniciar sesión
+# ERROR: No existe
+ERROR: Debe iniciar sesión
+#  27: COMANDOS CR\u00cdTICOS - LOSS Y RECOVERY
+# Simular p\u00e9rdida del sistema (solo EXT3 - usar 682A)
+ERROR: ID '682A' no montado
+# Ver que el journal sigue disponible
+ERROR: ID '682A' no montado
+# Recuperar el sistema desde journal
+ERROR: ID '682A' no montado
+# DESMONTAR PARTICIONES
+# Primero hacer logout desde la interfaz web
+# Desmontar todas las particiones montadas (682A, 683A, 681B que es PartB1, 681C)
+ERROR: ID '682A' no está montado
+ERROR: ID '683A' no está montado
+ERROR: ID '681B' no está montado
+ERROR: ID '681C' no está montado
+# Verificar
+INFO: No hay particiones montadas actualmente
